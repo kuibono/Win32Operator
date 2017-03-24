@@ -20,7 +20,7 @@ using like following code:
                 var newWin = mainWin.GetnewWindow("#32770", "Save Print Output As");
                 Console.WriteLine(newWin.Name);
 
-                Thread.Sleep(5000);
+                //Thread.Sleep(5000);
                 var edit = newWin
                     .Child("DUIViewWndClassName")
                     .Child("DirectUIHWND")
@@ -33,3 +33,4 @@ using like following code:
                 new Win("#32770", "印刷中...").WaitWindowDispose();
                 newWin1.Close();
             }
+           

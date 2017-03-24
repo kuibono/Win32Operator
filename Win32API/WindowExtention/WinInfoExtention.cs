@@ -17,8 +17,12 @@ namespace Win32.WindowExtention
 
         public static string GetCaption(IntPtr handle)
         {
-            StringBuilder a = new StringBuilder();
+            StringBuilder a = new StringBuilder(1024);
             var r = User32.GetWindowText(handle, a, 255);
+            if(a.Length==0)
+            {
+                User32.SendMessage(handle, User32.WM_GETTEXT, 1024,a);
+            }
             return a.ToString();
         }
         

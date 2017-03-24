@@ -18,7 +18,13 @@ namespace Win32.WindowExtention
             sw.Start();
             do
             {
-                win.Success = User32.SendMessage((IntPtr)win.Handle, 0x000C, text.Length, text) > 0;
+                User32.SendMessage((IntPtr)win.Handle, 0x000C, text.Length, text);
+
+                var ctrl = new Win { Handle=win.Handle };
+                if(ctrl.Name==text)
+                {
+                    win.Success = true;
+                }
             }
             while (!win.Success && sw.ElapsedMilliseconds < timeOut);
             return win;

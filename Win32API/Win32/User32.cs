@@ -4025,7 +4025,7 @@ namespace Win32
 		public static extern int SendMessage(IntPtr hWnd, int wMsg, int wParam, [MarshalAs(UnmanagedType.LPStr)] string lParam);
 
 		[DllImport("user32")]
-		public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, [MarshalAs(UnmanagedType.LPStr)] string lParam);
+		public static extern IntPtr SendMessage(IntPtr hWnd, int wMsg, IntPtr wParam, ref string lParam);
 
 		[DllImport("user32")]
 		public static extern int SendMessageW(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);

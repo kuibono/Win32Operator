@@ -29,7 +29,7 @@ namespace ConsoleTest
                 var newWin = mainWin.GetnewWindow("#32770", "Save Print Output As");
                 Console.WriteLine(newWin.Name);
 
-                Thread.Sleep(5000);
+                //Thread.Sleep(5000);
                 var edit = newWin
                     .Child("DUIViewWndClassName")
                     .Child("DirectUIHWND")
