@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Win32;
+using Win32.Task;
 using Win32.WindowExtention;
 namespace ConsoleTest
 {
@@ -13,45 +14,16 @@ namespace ConsoleTest
     {
         static void Main(string[] args)
         {
+            TaskManagerHandler handller = new ApisTaskManagerHandller();
             for(int i=0;i<100;i++)
             {
-                var mainWin = new Win("JpWin32").Active();
-
-                var pn = mainWin.Child("#32770");
-                pn.Child("Edit").SetText("喜連瓜破");
-                pn.Child("Edit", null, 1).SetText("福");
-                var NewWinPrt = pn.Child("Button", "平均経路の探索(&X)").Click();
-
-                var newWin1 = mainWin.GetnewWindow("#32770").Print();
-                var newWin2 = mainWin.GetnewWindow("#32770", "経路の印刷").Child("Button", "OK").Click();
-
-                Console.WriteLine("start find new window");
-                var newWin = mainWin.GetnewWindow("#32770", "Save Print Output As");
-                Console.WriteLine(newWin.Name);
-
-                //Thread.Sleep(5000);
-                var edit = newWin
-                    .Child("DUIViewWndClassName")
-                    .Child("DirectUIHWND")
-                    .Child("FloatNotifySink")
-                    .Child("ComboBox")
-                    .Child("Edit")
-                    .SetText(DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-                newWin.Child("Button", "&Save").Click();
-
-                new Win("#32770", "印刷中...").WaitWindowDispose();
-                newWin1.Close();
+                TaskRunner runner = new TaskRunner();
+                runner.Handler = handller;
+                runner.FileName = @"C:\Users\BEN.BING.CUI\Desktop\Win32API-master\Win32API\Task\TestOperation.cs";
+                runner.Task = new Win32.Model.OperationTask { Data= "{\"Name\":\"wwww\"}" };
+                runner.Execute();
             }
            
-
-            // WindowHelper.SetText("[@name='Save Print Output As',@class='#32770']>[0]>[0]>[0]>[0]>[@class='Edit'][0]", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            // while(WindowHelper.Click("[@name='Save Print Output As',@class='#32770']>[@name='&Save',@class='Button']")==0)
-            // {
-            //     WindowHelper.SetText("[@name='Save Print Output As',@class='#32770']>[0]>[0]>[0]>[0]>[@class='Edit'][0]", DateTime.Now.ToString("yyyyMMddHHmmssfff"));
-            // }
-
-            // WindowHelper.Close(string.Format("[@class='#32770',@name='{0} → {1}']", "喜連瓜破", "福"));
-            // Console.ReadLine();
         }
 
 
