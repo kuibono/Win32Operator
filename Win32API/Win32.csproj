@@ -48,15 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="APIS\TaskResult.cs" />
-    <Compile Include="Model\OperationTask.cs" />
-    <Compile Include="Progress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Task\ApisTaskManagerHandller.cs" />
-    <Compile Include="Task\IOperation.cs" />
-    <Compile Include="Task\TaskManagerHandler.cs" />
-    <Compile Include="Task\TaskRunner.cs" />
-    <Compile Include="Task\TestOperation.cs" />
     <Compile Include="Win.cs" />
     <Compile Include="Win32\ABC.cs" />
     <Compile Include="Win32\ABCFLOAT.cs" />
@@ -350,7 +342,9 @@
     <Compile Include="WindowPartten.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <Folder Include="APIS\" />
+    <Folder Include="Model\" />
+    <Folder Include="Task\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
